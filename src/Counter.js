@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Counter = () => {
-  const [counter, setCounter] = useState(0);
+  const counter = useSelector((state) => state?.counter);
+  const dispatch = useDispatch();
+
   return (
     <div>
       <div>Count:{counter}</div>
       <div className="margin">
-        <span className="button" onClick={() => setCounter((c) => c + 1)}>
+        <span
+          className="button"
+          onClick={() => dispatch({ type: "INCREMENT" })}
+        >
           +
         </span>{" "}
         <span
           className="button"
-          onClick={() => setCounter((c) => (c > 0 ? c - 1 : c))}
+          onClick={() => dispatch({ type: "DECREMENT" })}
         >
           -
         </span>
