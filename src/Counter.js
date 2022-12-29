@@ -1,36 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { incrementAction, decrementAction } from "./redux/actions";
 
 const Counter = () => {
   const gcounter = useSelector((state) => state?.counter);
   const dispatch = useDispatch();
 
-  console.log("gcounter", gcounter);
-
-  const [counter, setCounter] = useState(0);
-
   return (
     <div>
       <div>Count:{gcounter}</div>
       <div className="margin">
-        <span
-          className="button"
-          onClick={() =>
-            dispatch({
-              type: "INCREMENT",
-            })
-          }
-        >
+        <span className="button" onClick={() => dispatch(incrementAction)}>
           +
         </span>{" "}
-        <span
-          className="button"
-          onClick={() =>
-            dispatch({
-              type: "DECREMENT",
-            })
-          }
-        >
+        <span className="button" onClick={() => dispatch(decrementAction)}>
           -
         </span>
       </div>
